@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("ContraQualifier")
+@Qualifier("ContraGaQualifier")
 public class Contra implements GameConsole{
 	
 	public void up() {
