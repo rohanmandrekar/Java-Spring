@@ -1,8 +1,8 @@
 package com.springhelloworld.firstrun.game;
 
 public class gameRunner {
-	Mario game;
-	public gameRunner(Mario game) {
+	private Contra game;
+	public gameRunner(Contra game) {
 		this.game=game;
 	}
 	public void run() {
