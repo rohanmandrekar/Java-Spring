@@ -1,6 +1,6 @@
 package com.springhelloworld.firstrun.game;
 
-public class Contra {
+public class Contra implements GameConsole{
 	
 	public void up() {
 		System.out.println("Up");

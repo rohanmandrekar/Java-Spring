@@ -1,6 +1,6 @@
 package com.springhelloworld.firstrun.game;
 
-public class Mario {
+public class Mario implements GameConsole{
 	
 	public void up() {
 		System.out.println("Jump");
