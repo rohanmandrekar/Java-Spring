@@ -12,8 +12,7 @@ public class GamingAppLauncherApplication {
 	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 		try(var context= new AnnotationConfigApplicationContext(GamingAppLauncherApplication.class);){
 		
 		context.getBean(GameConsole.class).up();
