@@ -4,6 +4,7 @@
 </head>
 <body>
 <h1>View TODOs here!</h1>
+<h2>hello ${name}</h2>
 <h2>${todos}</h2>
 </body>
 </html>
