@@ -7,6 +7,5 @@
 		<h1>Welcome!</h1>
 	</div>
 	<div>Name: ${name}</div>
-	<div>Password: ${password}</div>
 </body>
 </html>
