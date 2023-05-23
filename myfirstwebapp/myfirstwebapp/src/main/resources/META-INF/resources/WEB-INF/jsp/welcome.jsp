@@ -3,10 +3,14 @@
 <title>Welcome</title>
 </head>
 <body>
-	<div>
-		<h1>Welcome!</h1>
+	<div class="container">
+		
+			<h1>Welcome!</h1>
+		
+		Name: ${name}
+		
+			<a href="list-todos">Got to TODOs</a>
+		
 	</div>
-	<div>Name: ${name}</div>
-	<div><a href="list-todos">Got to TODOs</a></div>
 </body>
 </html>
