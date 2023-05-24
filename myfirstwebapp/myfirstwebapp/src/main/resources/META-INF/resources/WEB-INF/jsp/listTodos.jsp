@@ -10,6 +10,7 @@
 	<div class="container">
 	<h1>TODO List for ${name}</h1>
 	<hr>
+		<a href="add-todo" class="btn btn-success">Add Task</a>
 		<table class="table">
 			<thead>
 				<tr>
