@@ -12,9 +12,14 @@
 		<pre style="color: red">${errorMessage}</pre>
 
 		<form class="form" method="post">
-			Username:<input type="text" name="name"> <br>
-			 Password:<input type="password" name="password"> <br>
-				<input type="submit">
+		<div class="form-group">
+			Username:<input type="text" name="name"> <br><br>
+			</div>
+			<div class="form-group">
+			Password:    <input type="password" name="password"> <br>
+			 </div>
+			 <br>
+			<button  type="submit" class="btn btn-primary">Submit</button>
 
 		</form>
 		<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
