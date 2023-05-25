@@ -1,8 +1,5 @@
-<html>
-<head>
-<title>Welcome</title>
-</head>
-<body>
+	<%@include file="common/header.jspf" %>
+	<%@include file="common/navigation.jspf" %>
 	<div class="container">
 		
 			<h1>Welcome!</h1>
@@ -12,5 +9,4 @@
 			<a href="list-todos">Got to TODOs</a>
 		
 	</div>
-</body>
-</html>
+	<%@include file="common/footer.jspf" %>
