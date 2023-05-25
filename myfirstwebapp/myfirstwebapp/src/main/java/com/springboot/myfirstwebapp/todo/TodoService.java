@@ -14,9 +14,9 @@ public class TodoService {
 	private static int todoCount=0;
 	private static List<Todo> todos=new ArrayList<>();
 	static {
-		todos.add(new Todo(++todoCount,"Rohan","Finish Spring", LocalDate.now().plusDays(10), false));
-		todos.add(new Todo(++todoCount,"Rohan","Apply 10 Jobs", LocalDate.now().plusDays(1), false));
-		todos.add(new Todo(++todoCount,"Rohan","Read", LocalDate.now().plusDays(1), false));
+		todos.add(new Todo(++todoCount,"Rohan","Finish Spring 1", LocalDate.now().plusDays(10), false));
+		todos.add(new Todo(++todoCount,"Rohan","Apply 10 Jobs 1", LocalDate.now().plusDays(1), false));
+		todos.add(new Todo(++todoCount,"Rohan","Read 1", LocalDate.now().plusDays(1), false));
 		
 		}
 	
