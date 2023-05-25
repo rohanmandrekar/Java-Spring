@@ -15,6 +15,7 @@ public class SpringSecurityConfiguration {
 	//LDAP or database is used usually to store userdetails
 	
 	//here we use in  memmory
+	
 	@Bean
 	public InMemoryUserDetailsManager createUserDetailsManager() {
 		
