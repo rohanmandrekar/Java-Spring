@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-
 import com.rest.webservices.restfulwebservices.user.UserNotFoundException;
 
 @ControllerAdvice
@@ -42,7 +41,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(
 			MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
-		ErrorDetails errorDetails= new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
+		ErrorDetails errorDetails= new ErrorDetails(LocalDateTime.now(), ex.getFieldError().getDefaultMessage(),request.getDescription(false));
 		return new ResponseEntity<Object>(errorDetails,HttpStatus.BAD_REQUEST);
 		
 	}
