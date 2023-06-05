@@ -12,7 +12,7 @@ insert into post(id,description,user_id)
 values(2,'hello world',1001);
 
 insert into post(id,description,user_id)
-values(4,'I wont drink water',1002);
+values(3,'I wont drink water',1002);
 
 insert into post(id,description,user_id)
 values(4,'Drink water',1001);
