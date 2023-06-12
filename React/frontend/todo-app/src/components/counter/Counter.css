@@ -10,6 +10,18 @@
     border-width: 5px;
 }
 
+.counterButtonDec{
+    font-size: 30px;
+    background-color:#d06640;
+    width:100px;
+    margin:10px;
+    color:white;
+    padding:15px;
+    border-radius:50px;
+    border-color:black;
+    border-width: 5px;
+}
+
 .count{
     font-size: 100px;
     padding: 20px;

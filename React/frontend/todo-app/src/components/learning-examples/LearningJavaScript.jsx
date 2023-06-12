@@ -29,5 +29,4 @@ export default function LearningJavascript(){
         <div>{person.PrintProfile()}</div>
         </>
     );
-
 }
