@@ -25,4 +25,15 @@
 .count{
     font-size: 100px;
     padding: 20px;
+}
+
+.resetCount{
+    font-size: 40px;
+    width:220px;
+    border-radius:50px;
+    color:white;
+    margin:10px;
+    border-color:black;
+    border-width: 5px;
+    background-color:#434fba;
 };

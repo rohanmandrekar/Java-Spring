@@ -1,6 +1,7 @@
 import './Counter.css'
+import CounterButton from './CounterButton.jsx'
 import {useState} from 'react'
-import {PropTypes} from "prop-types";
+import Reset from './Reset.jsx'
 
 
 export default function Counter(){
@@ -14,45 +15,28 @@ export default function Counter(){
         setCount(count-by)
     }
 
+    function resetCount(){
+        setCount(0)
+    }
+
     return(
         <div>
         <span className="count">{count}</span><br></br>    
-        <CounterButton by={1} incrementmethod={incrementCounterParentFunction} Decrementmethod={DecrementCounterParentFunction} />
-        <CounterButton by={2} incrementmethod={incrementCounterParentFunction} Decrementmethod={DecrementCounterParentFunction}/>
-        <CounterButton by={5} incrementmethod={incrementCounterParentFunction} Decrementmethod={DecrementCounterParentFunction}/>
+        <CounterButton by={1} 
+        incrementmethod={incrementCounterParentFunction} 
+        Decrementmethod={DecrementCounterParentFunction} />
+        <CounterButton by={2} 
+        incrementmethod={incrementCounterParentFunction}
+         Decrementmethod={DecrementCounterParentFunction}/>
+        <CounterButton by={5} 
+        incrementmethod={incrementCounterParentFunction} 
+        Decrementmethod={DecrementCounterParentFunction}/>
+        <Reset resetCount={resetCount}/>
+
         </div>
     )
 }
 
 
- function CounterButton({by, incrementmethod, Decrementmethod}){
 
-    const [count,setCount] = useState(0);
-  
-    function incrementCounterFunction(){
-        setCount(count+by)
-        incrementmethod(by)
-    }
-    function decrementCounterFunction(){
-        setCount(count-by)
-        Decrementmethod(by)
-    }
-    return(
-        <div className="Counter">
-            
-            {/* <span className="count">{count}</span><br></br> */}
-            <button className="counterButton" onClick={incrementCounterFunction}>+{by}</button>
-            <button className="counterButtonDec" onClick={decrementCounterFunction}>-{by}</button>
-        </div> 
-    );
-
-//     CounterButton.propTypes={
-//         by: PropTypes.number
-//       }
-      
-//       CounterButton.defaultProps={
-//         by:1
-//       }
-// 
-}
 
