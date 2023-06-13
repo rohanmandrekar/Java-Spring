@@ -8,9 +8,21 @@ function App() {
   return (
     <div className="App">
       {/* <LearningComponent></LearningComponent> */}
-      <Counter/>
+      <Counter by="1"/>
+      <Counter by="2"/>
+      <Counter by="5"/>
+      {/* <PlayingWithPorperties property1="prop1" property2="prop2"/> */}
     </div>
   );
 } 
+
+// function PlayingWithPorperties({property1,property2}){
+//   console.log(property1)
+//   console.log(property2)
+//   return(
+
+//     <div>Props</div>
+//   );
+// }
 
 export default App;
