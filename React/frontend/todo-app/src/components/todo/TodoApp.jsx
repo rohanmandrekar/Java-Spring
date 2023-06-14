@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, useNavigate,useParams} from 'react-router-dom'
 import './TodoApp.css'
 
 
@@ -12,7 +12,8 @@ export default function TodoApp(){
                 <Routes>
                     <Route path='/' element={<LoginComponent/>}></Route>
                     <Route path='/login' element={<LoginComponent/>}></Route>
-                    <Route path='/welcome' element={<WelcomeComponent/>}></Route>
+                    <Route path='/welcome/:username' element={<WelcomeComponent/>}></Route>
+                    <Route path='*' element={<ErrorComponent/>}></Route>
                 </Routes>
             </BrowserRouter>
 
@@ -43,16 +44,16 @@ function LoginComponent(){
     function handleSubmit(){
         if(username==='user' && password==='pass'){
 
-            navigate('/welcome')
+            navigate(`/welcome/${username}`)
         }
         else{
             setShowError(true)
-            setShowSuccess(false)
         }
     }
 
     return(
         <div className="Login">
+            <h1>Login</h1>
 
             {showError && <div className='errorMessage' style={{color:"red"}}>Authention Failed</div>}
             
@@ -80,9 +81,21 @@ function LoginComponent(){
 
 
 function WelcomeComponent(){
+
+    const {username}= useParams()
+
     return(
         <div className="Welcome">
-            Welcome Component
+            <h1>Welcome {username}</h1>
+        </div>
+    )
+}
+
+function ErrorComponent(){
+    return(
+        <div className="ErrorComponent">
+            <h1 style={{color:"red"}}>We are working on this!</h1>
+            <div>Reach out to our team at 123-456-7890</div>
         </div>
     )
 }
