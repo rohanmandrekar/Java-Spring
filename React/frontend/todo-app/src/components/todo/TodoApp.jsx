@@ -33,16 +33,20 @@ function LoginComponent(){
     function handleSubmit(){
         if(username==='user' && password==='pass'){
             setShowSuccess(true)
+            setShowError(false)
         }
         else{
             setShowError(true)
+            setShowSuccess(false)
         }
     }
 
     return(
         <div className="Login">
-            <SuccessMessageComponent showSuccess={showSuccess}/>
-            <ErrorMessageComponent showError={showError}/>
+
+            {showSuccess &&  <div className='authenticatedMessage' style={{color:"green"}}>Authenticated Succesfully</div>}
+            
+            {showError && <div className='errorMessage' style={{color:"red"}}>Authention Failed</div>}
             
             <div className="LoginForm">
                 <div>
@@ -64,32 +68,34 @@ function LoginComponent(){
     )
 }
 
-function SuccessMessageComponent({showSuccess}){
-    if(showSuccess){
-    return(
-        <div className='authenticatedMessage' style={{color:"green"}}>Authenticated Succesfully</div>
-    )
-    }
-    else{
-        return null
-    }
-}
+// function SuccessMessageComponent({showSuccess}){
+//     if(showSuccess){
+//     return(
+//         <div className='authenticatedMessage' style={{color:"green"}}>Authenticated Succesfully</div>
+//     )
+//     }
+//     else{
+//         return null
+//     }
+// }
 
-function ErrorMessageComponent({showError}){
-    if(showError){
-    return(
-        <div className='errorMessage' style={{color:"red"}}>Authention Failed</div>
-    )
-    }
-    else{
-        return null
-    }
-}
+// function ErrorMessageComponent({showError}){
+//     if(showError){
+//     return(
+//         <div className='errorMessage' style={{color:"red"}}>Authention Failed</div>
+//     )
+//     }
+//     else{
+//         return null
+//     }
+// }
 
-function WelcomeComponent(){
-    return(
-        <div className="Welcome">
-            Welcome Component
-        </div>
-    )
-}
+
+
+// function WelcomeComponent(){
+//     return(
+//         <div className="Welcome">
+//             Welcome Component
+//         </div>
+//     )
+// }
