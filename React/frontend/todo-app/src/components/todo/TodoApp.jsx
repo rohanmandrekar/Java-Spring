@@ -1,13 +1,23 @@
 import { useState } from 'react'
+import {BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom'
 import './TodoApp.css'
+
 
 
 export default function TodoApp(){
     return(
         <div className="TodoApp">
-            Todo List App
-            <LoginComponent/>
-            {/* <WelcomeComponent/> */}
+            
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<LoginComponent/>}></Route>
+                    <Route path='/login' element={<LoginComponent/>}></Route>
+                    <Route path='/welcome' element={<WelcomeComponent/>}></Route>
+                </Routes>
+            </BrowserRouter>
+
+            
+            
         </div>
     )
 
@@ -17,23 +27,23 @@ function LoginComponent(){
 
     const [username, setUser] = useState("user")
     const [password,setPassword]=useState("pass")
-    const [showSuccess,setShowSuccess]=useState(false)
     const [showError,setShowError]=useState(false)
+    const navigate= useNavigate()
 
     function handleUsernameChange(event){
-        // console.log(event.target.value);
+    
         setUser(event.target.value)
     }
 
     function handlePasswordChange(event){
-        // console.log(event.target.value);
+    
         setPassword(event.target.value)
     }
 
     function handleSubmit(){
         if(username==='user' && password==='pass'){
-            setShowSuccess(true)
-            setShowError(false)
+
+            navigate('/welcome')
         }
         else{
             setShowError(true)
@@ -44,8 +54,6 @@ function LoginComponent(){
     return(
         <div className="Login">
 
-            {showSuccess &&  <div className='authenticatedMessage' style={{color:"green"}}>Authenticated Succesfully</div>}
-            
             {showError && <div className='errorMessage' style={{color:"red"}}>Authention Failed</div>}
             
             <div className="LoginForm">
@@ -68,34 +76,13 @@ function LoginComponent(){
     )
 }
 
-// function SuccessMessageComponent({showSuccess}){
-//     if(showSuccess){
-//     return(
-//         <div className='authenticatedMessage' style={{color:"green"}}>Authenticated Succesfully</div>
-//     )
-//     }
-//     else{
-//         return null
-//     }
-// }
-
-// function ErrorMessageComponent({showError}){
-//     if(showError){
-//     return(
-//         <div className='errorMessage' style={{color:"red"}}>Authention Failed</div>
-//     )
-//     }
-//     else{
-//         return null
-//     }
-// }
 
 
 
-// function WelcomeComponent(){
-//     return(
-//         <div className="Welcome">
-//             Welcome Component
-//         </div>
-//     )
-// }
+function WelcomeComponent(){
+    return(
+        <div className="Welcome">
+            Welcome Component
+        </div>
+    )
+}
