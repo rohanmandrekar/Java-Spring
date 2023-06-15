@@ -13,6 +13,9 @@ export default function TodoApp(){
                     <Route path='/' element={<LoginComponent/>}></Route>
                     <Route path='/login' element={<LoginComponent/>}></Route>
                     <Route path='/welcome/:username' element={<WelcomeComponent/>}></Route>
+                    <Route path='/todos' element={<ListTodoComponent/>}></Route>
+
+
                     <Route path='*' element={<ErrorComponent/>}></Route>
                 </Routes>
             </BrowserRouter>
@@ -96,6 +99,41 @@ function ErrorComponent(){
         <div className="ErrorComponent">
             <h1 style={{color:"red"}}>We are working on this!</h1>
             <div>Reach out to our team at 123-456-7890</div>
+        </div>
+    )
+}
+
+function ListTodoComponent(){
+    const todos= [{id:1, task: 'Learn AWS'},{id:2, task: 'Interview prep'}, {id:3, task: 'Apply for jobs'}]
+    return(
+        <div className="ListTodoComponent">
+            <h1>List of TODOs</h1>
+            <div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Task</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {
+                            todos.map(
+                                todo=>(
+                                    <tr key={todo.id}>
+                                        <td>{todo.id}</td>
+                                        <td>{todo.task}</td>
+                                    </tr> 
+                                )
+                            )
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
         </div>
     )
 }
