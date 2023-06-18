@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {BrowserRouter, Routes, Route, useNavigate,useParams} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, useNavigate,useParams, Link} from 'react-router-dom'
 import './TodoApp.css'
 
 
@@ -90,6 +90,7 @@ function WelcomeComponent(){
     return(
         <div className="Welcome">
             <h1>Welcome {username}</h1>
+          <h2><Link to="/todos">Go to TODOs</Link></h2> 
         </div>
     )
 }
@@ -104,7 +105,12 @@ function ErrorComponent(){
 }
 
 function ListTodoComponent(){
-    const todos= [{id:1, task: 'Learn AWS'},{id:2, task: 'Interview prep'}, {id:3, task: 'Apply for jobs'}]
+    const today= new Date();
+    const targetDate= new Date(today.getMonth(),today.getDay()+1,today.getFullYear())
+    const todos= [
+        {id:1, task: 'Learn AWS', done:false, targetDate:targetDate},
+        {id:2, task: 'Interview prep', done:false, targetDate:targetDate}, 
+        {id:3, task: 'Apply for jobs', done:false, targetDate:targetDate}]
     return(
         <div className="ListTodoComponent">
             <h1>List of TODOs</h1>
@@ -115,6 +121,8 @@ function ListTodoComponent(){
                         <tr>
                             <td>Id</td>
                             <td>Task</td>
+                            <td>Status</td>
+                            <td>Target Date</td>
                         </tr>
                     </thead>
 
@@ -125,6 +133,8 @@ function ListTodoComponent(){
                                     <tr key={todo.id}>
                                         <td>{todo.id}</td>
                                         <td>{todo.task}</td>
+                                        <td>{todo.done.toString()}</td>
+                                        <td>{todo.targetDate.toDateString()}</td>
                                     </tr> 
                                 )
                             )
