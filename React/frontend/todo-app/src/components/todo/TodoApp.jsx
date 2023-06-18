@@ -112,11 +112,11 @@ function ListTodoComponent(){
         {id:2, task: 'Interview prep', done:false, targetDate:targetDate}, 
         {id:3, task: 'Apply for jobs', done:false, targetDate:targetDate}]
     return(
-        <div className="ListTodoComponent">
+        <div className="container">
             <h1>List of TODOs</h1>
             <div>
                 
-                <table>
+                <table className='table'>
                     <thead>
                         <tr>
                             <td>Id</td>
