@@ -22,14 +22,15 @@ export default function LoginComponent(){
     }
 
     function handleSubmit(){
-        if(username==='user' && password==='pass'){
-            authContext.setAuthenticated(true)
+        if(authContext.login(username,password)){
             navigate(`/welcome/${username}`)
         }
         else{
             setShowError(true)
         }
     }
+
+   
 
     return(
         <div className="Login">
