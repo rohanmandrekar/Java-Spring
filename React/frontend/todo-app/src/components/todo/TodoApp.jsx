@@ -1,11 +1,13 @@
 
-import {BrowserRouter, Routes, Route, useParams, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import LogoutComponent from './LogoutComponent'
 import LoginComponent from './LoginComponent'
 import ListTodoComponent from './ListTodoComponent'
 import ErrorComponent from './ErrorComponent'
 import WelcomeComponent from './WelcomeComponent'
 import HeaderComponent from './HeaderComponent'
+import AuthProvider from './security/AuthContext'
+
 // import FooterComponent from './FooterComponent'
 import './TodoApp.css'
 
@@ -14,7 +16,7 @@ import './TodoApp.css'
 export default function TodoApp(){
     return(
         <div className="TodoApp">
-            
+            <AuthProvider>
             <BrowserRouter>
                 <HeaderComponent/>
                 <Routes>
@@ -28,6 +30,7 @@ export default function TodoApp(){
                 </Routes>
                 {/* <FooterComponent/> */}
             </BrowserRouter>
+            </AuthProvider>
             
             
             
