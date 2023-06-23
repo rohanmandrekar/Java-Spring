@@ -4,12 +4,15 @@ import axios from 'axios'
 export default function WelcomeComponent(){
 
     const {username}= useParams()
+    var password='pass'
+    var username1='user'
 
+    var basicAuth= 'Basic' + btoa(username1 + ':' + password)
     function callHelloWorld(){
-        axios.get('http://localhost:8080/hello-world',{}, {auth: {
-            username: 'user',
-            password: 'pass'
-          }})
+        axios.get('http://localhost:8080/hello-world',{}, {
+            headers:{Authorization: + 'Basic dXNlcjpwYXNz'}
+
+        })
             .then((response)=>successfulResponse(response))
             .catch((error)=>errorResponse(error))
             .finally( ()=>console.log('cleanup'))
