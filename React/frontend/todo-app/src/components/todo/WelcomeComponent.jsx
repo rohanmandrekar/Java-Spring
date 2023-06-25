@@ -9,10 +9,7 @@ export default function WelcomeComponent(){
 
     var basicAuth= 'Basic' + btoa(username1 + ':' + password)
     function callHelloWorld(){
-        axios.get('http://localhost:8080/hello-world',{}, {
-            headers:{Authorization: + 'Basic dXNlcjpwYXNz'}
-
-        })
+        axios.get('http://localhost:8080/hello-world')
             .then((response)=>successfulResponse(response))
             .catch((error)=>errorResponse(error))
             .finally( ()=>console.log('cleanup'))
