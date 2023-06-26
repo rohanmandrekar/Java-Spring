@@ -1,13 +1,14 @@
 import { useParams,Link } from "react-router-dom"
 import axios from 'axios'
+import { useState } from "react"
 
 export default function WelcomeComponent(){
 
     const {username}= useParams()
-    var password='pass'
-    var username1='user'
 
-    var basicAuth= 'Basic' + btoa(username1 + ':' + password)
+    const [message, setMessage] = useState(null)
+
+
     function callHelloWorld(){
         axios.get('http://localhost:8080/hello-world')
             .then((response)=>successfulResponse(response))
@@ -16,9 +17,23 @@ export default function WelcomeComponent(){
     }
     function successfulResponse(response){
         console.log(response)
+        setMessage(response.data)
     }
+
+    function successfulResponseBean(response){
+        console.log(response)
+        setMessage(response.data.message)
+    }
+
     function errorResponse(error){
         console.log(error)
+    }
+
+    function callHelloWorldBean(){
+        axios.get('http://localhost:8080/hello-world-bean')
+            .then((response)=>successfulResponseBean(response))
+            .catch((error)=>errorResponse(error))
+            .finally( ()=>console.log('cleanup'))
     }
 
     return(
@@ -27,6 +42,11 @@ export default function WelcomeComponent(){
             <h2><Link to="/todos">Go to TODOs</Link></h2> 
             <div>
                 <button className="btn btn-success m-5" onClick={callHelloWorld}>Hello World</button>
+            </div>
+            <div className="text-info">{message}</div>
+
+            <div>
+                <button className="btn btn-success m-5" onClick={callHelloWorldBean}>Hello World Bean</button>
             </div>
         </div>
     )
