@@ -1,6 +1,8 @@
 import { useParams,Link } from "react-router-dom"
-import axios from 'axios'
 import { useState } from "react"
+import { retrieveHelloWorldBean, RetrievePathVariableBean } from "./api/HelloWorldApiService"
+
+
 
 export default function WelcomeComponent(){
 
@@ -8,17 +10,6 @@ export default function WelcomeComponent(){
 
     const [message, setMessage] = useState(null)
 
-
-    function callHelloWorld(){
-        axios.get('http://localhost:8080/hello-world')
-            .then((response)=>successfulResponse(response))
-            .catch((error)=>errorResponse(error))
-            .finally( ()=>console.log('cleanup'))
-    }
-    function successfulResponse(response){
-        console.log(response)
-        setMessage(response.data)
-    }
 
     function successfulResponseBean(response){
         console.log(response)
@@ -30,7 +21,14 @@ export default function WelcomeComponent(){
     }
 
     function callHelloWorldBean(){
-        axios.get('http://localhost:8080/hello-world-bean')
+        retrieveHelloWorldBean()
+            .then((response)=>successfulResponseBean(response))
+            .catch((error)=>errorResponse(error))
+            .finally( ()=>console.log('cleanup'))
+    }
+
+    function callHelloWorldPathVariable(){
+        RetrievePathVariableBean("Rohan")
             .then((response)=>successfulResponseBean(response))
             .catch((error)=>errorResponse(error))
             .finally( ()=>console.log('cleanup'))
@@ -40,17 +38,23 @@ export default function WelcomeComponent(){
         <div className="Welcome">
             <h1>Welcome {username}</h1>
             <h2><Link to="/todos">Go to TODOs</Link></h2> 
-            <div>
-                <button className="btn btn-success m-5" onClick={callHelloWorld}>Hello World</button>
-            </div>
-            <div className="text-info">{message}</div>
+
+            
 
             <div>
                 <button className="btn btn-success m-5" onClick={callHelloWorldBean}>Hello World Bean</button>
             </div>
+
+            <div className="text-info">{message}</div>
+
+            <div>
+                <button className="btn btn-success m-5" onClick={callHelloWorldPathVariable}>Hello World Path Variable</button>
+            </div>
+
+
+
+             
         </div>
     )
 }
-
-
 
