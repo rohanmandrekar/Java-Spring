@@ -1,6 +1,6 @@
 import { useParams,Link } from "react-router-dom"
 import { useState } from "react"
-import { retrieveHelloWorldBean, RetrievePathVariableBean } from "./api/HelloWorldApiService"
+import { retrieveAllTodosForUsername } from "./api/TodoApiService"
 
 
 
@@ -20,15 +20,8 @@ export default function WelcomeComponent(){
         console.log(error)
     }
 
-    function callHelloWorldBean(){
-        retrieveHelloWorldBean()
-            .then((response)=>successfulResponseBean(response))
-            .catch((error)=>errorResponse(error))
-            .finally( ()=>console.log('cleanup'))
-    }
-
-    function callHelloWorldPathVariable(){
-        RetrievePathVariableBean("Rohan")
+    function callAlltodosUser(){
+        retrieveAllTodosForUsername("Rohan")
             .then((response)=>successfulResponseBean(response))
             .catch((error)=>errorResponse(error))
             .finally( ()=>console.log('cleanup'))
@@ -42,17 +35,10 @@ export default function WelcomeComponent(){
             
 
             <div>
-                <button className="btn btn-success m-5" onClick={callHelloWorldBean}>Hello World Bean</button>
+                <button className="btn btn-success m-5" onClick={callAlltodosUser}>Hello World Bean</button>
             </div>
 
             <div className="text-info">{message}</div>
-
-            <div>
-                <button className="btn btn-success m-5" onClick={callHelloWorldPathVariable}>Hello World Path Variable</button>
-            </div>
-
-
-
              
         </div>
     )
