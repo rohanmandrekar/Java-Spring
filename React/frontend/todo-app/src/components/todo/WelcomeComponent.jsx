@@ -1,6 +1,6 @@
 import { useParams,Link } from "react-router-dom"
 import { useState } from "react"
-import { retrieveAllTodosForUsername } from "./api/TodoApiService"
+import { retrieveAllTodosForUsernameApi } from "./api/TodoApiService"
 
 
 
@@ -21,7 +21,7 @@ export default function WelcomeComponent(){
     }
 
     function callAlltodosUser(){
-        retrieveAllTodosForUsername("Rohan")
+        retrieveAllTodosForUsernameApi("Rohan")
             .then((response)=>successfulResponseBean(response))
             .catch((error)=>errorResponse(error))
             .finally( ()=>console.log('cleanup'))

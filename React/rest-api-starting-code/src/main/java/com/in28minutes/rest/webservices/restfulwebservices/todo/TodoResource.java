@@ -34,6 +34,7 @@ public class TodoResource {
 	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable int id) {
 		todoService.deleteById(id);
 		return ResponseEntity.noContent().build();
+		
 	}
 	
 
