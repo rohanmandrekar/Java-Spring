@@ -16,4 +16,4 @@ export const retriveTodoByIdApi = (username, id)=> apiClient.get(`http://localho
 
 export const deleteTodoApi = (username, id) => apiClient.delete(`http://localhost:8080/users/${username}/todos/${id}`)
 
-// export const RetrievePathVariableBean = (username) => apiClient.get(`http://localhost:8080/hello-world/path-variable/${username}`)
+export const updateTodoApi = (username, id, todo) => apiClient.put(`http://localhost:8080/users/${username}/todos/${id}`, todo)
