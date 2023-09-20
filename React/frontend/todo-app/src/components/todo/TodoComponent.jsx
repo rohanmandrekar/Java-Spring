@@ -38,7 +38,7 @@ export default function TodoComponent(){
         if (values.description.length<1){
             errors.description= "Task cannot be blank"
         }
-        if(values.targetDate==null){
+        if(values.targetDate==""){
             errors.targetDate="Date cannot be blank"
         }
 
