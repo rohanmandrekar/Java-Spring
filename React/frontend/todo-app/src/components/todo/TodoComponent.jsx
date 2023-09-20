@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useAuth } from "./security/AuthContext"
 import { retriveTodoByIdApi } from "./api/TodoApiService"
 import { useEffect, useState } from "react"
-import { Formik, Form, Field } from "formik"
+import { Formik, Form, Field, ErrorMessage } from "formik"
 
 export default function TodoComponent(){
     const {id} = useParams()
@@ -26,16 +26,51 @@ export default function TodoComponent(){
         .catch(error=>console.log(error))
     
     }
+
+
+    function onSubmit(values){
+          
+    }
+
+    function validate(values){
+        let errors ={}
+
+        if (values.description.length<1){
+            errors.description= "Task cannot be blank"
+        }
+        if(values.targetDate==null){
+            errors.targetDate="Date cannot be blank"
+        }
+
+        return errors
+
+    }
+
     return(
         <div className="container">
             <h1>Enter Todo Details</h1>
             <div>
                 <Formik initialValues={{description, targetDate}}
                     enableReinitialize={true}
+                    onSubmit={onSubmit}
+                    validate= {validate}
                 >
                     {
                         (props)=>(
                             <Form>
+                                <ErrorMessage 
+                                name="description"
+                                component= "div"
+                                className="alert alert-warning"
+                                />
+
+                                <ErrorMessage 
+                                name="targetDate"
+                                component= "div"
+                                className="alert alert-warning"
+                                />
+
+
                                 <fieldset className="form-group">
                                     <label>Description</label>
                                     <Field type="text" className="form-control" name="description"/>
