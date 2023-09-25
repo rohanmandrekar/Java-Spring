@@ -10,12 +10,17 @@ const apiClient= axios.create(
     }
 )
 
-export const retrieveAllTodosForUsernameApi = (username) => apiClient.get(`http://localhost:8080/users/${username}/todos`)
+export const retrieveAllTodosForUsernameApi = (username) => apiClient.get(`http://localhost:8080/users/${username}/todos`,{ 
+                                                                    headers:{Authorization: 'Basic cm9oYW46cm9oYW4='}})
 
-export const retriveTodoByIdApi = (username, id)=> apiClient.get(`http://localhost:8080/users/${username}/todos/${id}`)
+export const retriveTodoByIdApi = (username, id)=> apiClient.get(`http://localhost:8080/users/${username}/todos/${id}`,{ 
+    headers:{Authorization: 'Basic cm9oYW46cm9oYW4='}})
 
-export const deleteTodoApi = (username, id) => apiClient.delete(`http://localhost:8080/users/${username}/todos/${id}`)
+export const deleteTodoApi = (username, id) => apiClient.delete(`http://localhost:8080/users/${username}/todos/${id}`,{ 
+    headers:{Authorization: 'Basic cm9oYW46cm9oYW4='}})
 
-export const updateTodoApi = (username, id, todo) => apiClient.put(`http://localhost:8080/users/${username}/todos/${id}`, todo)
+export const updateTodoApi = (username, id, todo) => apiClient.put(`http://localhost:8080/users/${username}/todos/${id}`, todo,{ 
+    headers:{Authorization: 'Basic cm9oYW46cm9oYW4='}})
 
-export const createTodoApi = (username, todo) => apiClient.post(`http://localhost:8080/users/${username}/todos`, todo) 
+export const createTodoApi = (username, todo) => apiClient.post(`http://localhost:8080/users/${username}/todos`, todo,{ 
+    headers:{Authorization: 'Basic cm9oYW46cm9oYW4='}}) 
