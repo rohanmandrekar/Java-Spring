@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useAuth } from "./security/AuthContext"
-import { retriveTodoByIdApi, updateTodoApi } from "./api/TodoApiService"
+import { createTodoApi, retriveTodoByIdApi, updateTodoApi } from "./api/TodoApiService"
 import { useEffect, useState } from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 
@@ -14,27 +14,35 @@ export default function TodoComponent(){
     const [targetDate, setTargetDate] = useState('')
 
     useEffect(
-        ()=>retrieveTodo(id),
-        [id]
+        ()=>retrieveTodo(id)
     )
 
     function retrieveTodo(id){
+        if(id!==-1){
         retriveTodoByIdApi(username, id)
         .then(response=>{
             setDescription(response.data.description)
             setTargetDate(response.data.targetDate)
         })
         .catch(error=>console.log(error))
-
+        }
     
     }
 
 
     function onSubmit(values){
         const todo = {id:id, username:username, description:values.description,targetDate:values.targetDate,done: false}
+
+        if(id==-1){
+            createTodoApi(username,todo)
+            .then(response  => navigate('/todos'))
+            .catch(error=>console.log(error))
+           }
+        else{   
           updateTodoApi(username, id, todo)
           .then(response  => navigate('/todos'))
           .catch(error=>console.log(error))
+        }
     }
 
     function validate(values){
@@ -43,7 +51,7 @@ export default function TodoComponent(){
         if (values.description.length<1){
             errors.description= "Task cannot be blank"
         }
-        if(values.targetDate==""){
+        if(values.targetDate===""){
             errors.targetDate="Date cannot be blank"
         }
 
