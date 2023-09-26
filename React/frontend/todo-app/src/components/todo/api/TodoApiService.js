@@ -1,9 +1,10 @@
 import axios from "axios"
+import { useAuth } from "../security/AuthContext"
 
 // export function retrieveHelloWorldBean(){
 //     return axios.get('http://localhost:8080/hello-world-bean');
 // }
-
+// const authContext= useAuth()
 const apiClient= axios.create(
     {
         baseURL: 'http://localhost:8080/'
