@@ -1,6 +1,7 @@
 import { useParams,Link } from "react-router-dom"
 import { useState } from "react"
 import { retrieveAllTodosForUsernameApi } from "./api/TodoApiService"
+import { useAuth } from "./security/AuthContext"
 
 
 
@@ -10,6 +11,7 @@ export default function WelcomeComponent(){
 
     const [message, setMessage] = useState(null)
 
+    const authContext= useAuth()
 
     function successfulResponseBean(response){
         console.log(response)
@@ -21,7 +23,7 @@ export default function WelcomeComponent(){
     }
 
     function callAlltodosUser(){
-        retrieveAllTodosForUsernameApi("Rohan")
+        retrieveAllTodosForUsernameApi("Rohan",authContext.token)
             .then((response)=>successfulResponseBean(response))
             .catch((error)=>errorResponse(error))
             .finally( ()=>console.log('cleanup'))

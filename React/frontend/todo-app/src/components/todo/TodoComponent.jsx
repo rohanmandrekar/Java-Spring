@@ -9,17 +9,18 @@ export default function TodoComponent(){
     const authContext = useAuth()
     const username=authContext.username
     const navigate=useNavigate()
+    const token=authContext.token
 
     const [description,setDescription] = useState('')
     const [targetDate, setTargetDate] = useState('')
 
     useEffect(
-        ()=>retrieveTodo(id)
+        ()=>retrieveTodo(id,token)
     )
 
-    function retrieveTodo(id){
+    function retrieveTodo(id,token){
         if(id!==-1){
-        retriveTodoByIdApi(username, id)
+        retriveTodoByIdApi(username, id,token)
         .then(response=>{
             setDescription(response.data.description)
             setTargetDate(response.data.targetDate)
@@ -34,12 +35,12 @@ export default function TodoComponent(){
         const todo = {id:id, username:username, description:values.description,targetDate:values.targetDate,done: false}
 
         if(id==-1){
-            createTodoApi(username,todo)
+            createTodoApi(username,todo,token)
             .then(response  => navigate('/todos'))
             .catch(error=>console.log(error))
            }
         else{   
-          updateTodoApi(username, id, todo)
+          updateTodoApi(username, id, todo,token)
           .then(response  => navigate('/todos'))
           .catch(error=>console.log(error))
         }
