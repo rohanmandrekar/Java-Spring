@@ -1,12 +1,7 @@
-import axios from "axios";
+import { apiClient } from "./ApiClient"
 
-const apiCLient = axios.create(
-    {
-        baseURL: 'http://localhost:8080'
-    }
-)
 
-export const executeBasicAuthenticationService = (token) => apiCLient.get('/basicauth',
+export const executeBasicAuthenticationService = (token) => apiClient.get('/basicauth',
 {
     headers: {
         Authorization: token
