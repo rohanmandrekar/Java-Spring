@@ -7,3 +7,5 @@ export const executeBasicAuthenticationService = (token) => apiClient.get('/basi
         Authorization: token
     }
 })
+
+export const executeJWTAuthenticationService = (username,password) => apiClient.post('/authenticate',{username,password})
