@@ -36,3 +36,6 @@ class SomeBusinessImplMockTest {
 		assertEquals(Integer.MIN_VALUE, businessImpl.findTheGreatestFromAllData());
 	}
 }
+
+
+
