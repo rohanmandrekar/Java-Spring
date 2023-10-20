@@ -1,4 +1,4 @@
-package com.rohan.learnspringsecurity.basic;
+package com.rohan.learnspringsecurity.jwt;
 
 import javax.sql.DataSource;
 
@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,8 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-//@Configuration
-public class BasicAuthSecurityConfiguration {
+@Configuration
+public class JwtSecurityConfiguration {
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
@@ -28,27 +29,11 @@ public class BasicAuthSecurityConfiguration {
 		http.httpBasic();
 		http.csrf().disable();
 		http.headers().frameOptions().sameOrigin();
+		http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
 		return http.build();
 	
 	}
 	
-	
-//	@Bean
-//	public UserDetailsService userDetailsService() {
-//		
-//		var user= User.withUsername("rohan")
-//		.password("{noop}pass")
-//		.roles("USER")
-//		.build();
-//		
-//		var admin= User.withUsername("admin")
-//				.password("{noop}pass")
-//				.roles("ADMIN")
-//				.build();
-//		
-//		return new InMemoryUserDetailsManager(user,admin);
-//	}
-//	
 	
 	@Bean
 	public DataSource dataSource() {
@@ -87,6 +72,10 @@ public class BasicAuthSecurityConfiguration {
 		return new BCryptPasswordEncoder();
 	}
 	
+	@Bean
+	public JwtDecoder jwtDecoder() {
+		return decoder
+	}
 	
 	
 }
