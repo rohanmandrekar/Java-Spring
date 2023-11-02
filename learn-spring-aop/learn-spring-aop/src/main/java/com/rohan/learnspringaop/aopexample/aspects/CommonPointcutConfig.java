@@ -12,6 +12,8 @@ public class CommonPointcutConfig {
 	public void DataPackageConfig() {}
 	@Pointcut("bean(*Service*)")
 	public void allPackageConfigUsingBean() {}
+	@Pointcut("@annotation(com.rohan.learnspringaop.aopexample.annotations.TrackTime)")
+	public void trackTimeAnnotaion() {}
 	
 
 }
