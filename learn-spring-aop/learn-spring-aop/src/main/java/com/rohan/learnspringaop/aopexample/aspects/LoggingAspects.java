@@ -16,23 +16,23 @@ public class LoggingAspects {
 	
 	private Logger logger= LoggerFactory.getLogger(getClass());
 	
-	@Before("execution(* com.rohan.learnspringaop.aopexample.*.*.*(..))")
+	@Before("com.rohan.learnspringaop.aopexample.aspects.CommonPointcutConfig.businesAndDataPackageConfig()")
 	public void logMethodCallBefore(JoinPoint joinPoint) {
 		logger.info("Method {} called with arguments {} ", joinPoint, joinPoint.getArgs());
 	}
 	
-	@After("execution(* com.rohan.learnspringaop.aopexample.*.*.*(..))")
+	@After("com.rohan.learnspringaop.aopexample.aspects.CommonPointcutConfig.businesAndDataPackageConfig()")
 	public void logMethodCallAfter(JoinPoint joinPoint) {
 		logger.info("After {} has ran ", joinPoint);
 	}
 	
-	@AfterThrowing(pointcut="execution(* com.rohan.learnspringaop.aopexample.*.*.*(..))",
+	@AfterThrowing(pointcut="com.rohan.learnspringaop.aopexample.aspects.CommonPointcutConfig.businesAndDataPackageConfig()",
 			throwing="exception")
 	public void logMethodCallAfterException(JoinPoint joinPoint, Exception exception) {
 		logger.info("AfterThrowing aspect {} has ran and thrown {} ", joinPoint,exception);
 	}
 	
-	@AfterReturning(pointcut="execution(* com.rohan.learnspringaop.aopexample.*.*.*(..))",
+	@AfterReturning(pointcut="com.rohan.learnspringaop.aopexample.aspects.CommonPointcutConfig.businesAndDataPackageConfig()",
 			returning="resultValue")
 	public void logMethodCallAfterReturning(JoinPoint joinPoint, Object resultValue ) {
 		logger.info("AfterReturning aspect {} has ran and returned {} ", joinPoint, resultValue);
